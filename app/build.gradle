@@ -7,13 +7,14 @@ android {
         applicationId "com.example.gsyvideoplayer"
         multiDexEnabled true
 
-        javaCompileOptions {
-            annotationProcessorOptions.includeCompileClasspath = true
-        }
         ndk {
             //设置支持的SO库架构
             abiFilters 'armeabi', 'armeabi-v7a', 'x86'
         }
+    }
+
+    viewBinding {
+        enabled = true
     }
 
     signingConfigs {
@@ -40,15 +41,13 @@ android {
     lintOptions {
         abortOnError false
     }
-
-
 }
 
 dependencies {
     implementation androidDependencies.appCompat
     implementation androidDependencies.recyclerView
     implementation androidDependencies.core
-    implementation viewDependencies.DanmakuFlameMaster
+    implementation viewDependencies.danmakuFlameMaster
     implementation viewDependencies.ndkBitmap
     implementation viewDependencies.glide
     implementation androidDependencies.design
@@ -73,11 +72,8 @@ dependencies {
     implementation dataDependencies.okhttpUtil
     implementation dataDependencies.okhttp
 
-    implementation(dataDependencies.permissionsdispatcher)
-    annotationProcessor dataDependencies.permissionsdispatcherProcessor
-
-    implementation viewDependencies.butterKnife
-    annotationProcessor viewDependencies.apt_butterKnife
+    implementation(dataDependencies.permissionsDispatcher)
+    annotationProcessor dataDependencies.permissionsDispatcherProcessor
 
     //jcenter
     //implementation "com.shuyu:GSYVideoPlayer:$gsyVideoVersion"
